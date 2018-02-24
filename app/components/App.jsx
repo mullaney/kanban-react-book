@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Notes from './Notes'
 import uuid from 'uuid'
+import connect from '../libs/connect'
 
 const initialNotes = [
   {
@@ -13,7 +14,7 @@ const initialNotes = [
   }
 ]
 
-export default class App extends Component {
+class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -27,7 +28,8 @@ export default class App extends Component {
     const { notes } = this.state
     return (
       <div>
-        <button onClick={this.addNote}>+</button>
+        {this.props.test}
+        <button className="add-note" onClick={this.addNote}>+</button>
         <Notes
           notes={notes}
           onNoteClick={this.activateNoteEdit}
@@ -57,7 +59,7 @@ export default class App extends Component {
     })
   }
 
-  activateNoteEdit = (id) => {
+  activateNoteEdit (id) {
     this.setState({
       notes: this.state.notes.map(note => {
         if(note.id === id) {
@@ -68,7 +70,7 @@ export default class App extends Component {
     })
   }
 
-  editNote = (id, task) => {
+  editNote (id, task) {
     this.setState({
       notes: this.state.notes.map(note => {
         if(note.id === id) {
@@ -81,3 +83,7 @@ export default class App extends Component {
     })
   }
 }
+
+export default connect(() => ({
+  test: 'test'
+}))(App)
