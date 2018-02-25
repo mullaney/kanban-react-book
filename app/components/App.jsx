@@ -1,57 +1,27 @@
-import React, { Component } from 'react'
-import Notes from './Notes'
+import React from 'react'
 import uuid from 'uuid'
 import connect from '../libs/connect'
-import NoteActions from '../actions/NoteActions'
+import Lanes from './Lanes'
+import LaneActions from '../actions/LaneActions'
 
-class App extends Component {
-  constructor(props) {
-    super(props)
-    this.addNote = this.addNote.bind(this)
-    this.deleteNote = this.deleteNote.bind(this)
-    this.activateNoteEdit = this.activateNoteEdit.bind(this)
-    this.editNote = this.editNote.bind(this)
-  }
-
-  render () {
-    const { notes } = this.props
-    return (
-      <div>
-        <button className="add-note" onClick={this.addNote}>+</button>
-        <Notes
-          notes={notes}
-          onNoteClick={this.activateNoteEdit}
-          onEdit={this.editNote}
-          onDelete={this.deleteNote}
-        />
-      </div>
-    )
-  }
-
-  addNote () {
-    this.props.NoteActions.create({
+const App = ({LaneActions, lanes}) => {
+  const addLane = () => {
+    LaneActions.create({
       id: uuid.v4(),
-      task: 'New task'
+      name: 'New lane'
     })
   }
 
-  deleteNote (id, e) {
-    e.stopPropagation()
-
-    this.props.NoteActions.delete(id)
-  }
-
-  activateNoteEdit (id) {
-    this.props.NoteActions.update({ id, editing: true })
-  }
-
-  editNote (id, task) {
-    this.props.NoteActions.update({ id, task, editing: false })
-  }
+  return (
+    <div>
+      <button className="add-lane" onClick={addLane}>+</button>
+      <Lanes lanes={lanes} />
+    </div>
+  )
 }
 
-export default connect(({notes}) => ({
-  notes
+export default connect(({lanes}) => ({
+  lanes
 }), {
-  NoteActions
+  LaneActions
 })(App)
