@@ -25,7 +25,7 @@ const Lane = ({
   const activateNoteEdit = id => {
     NoteActions.update({id, editing: true})
   }
-
+  
   return (
     <div {...props}>
       <LaneHeader lane={lane} />
