@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 export default (state, actions) => {
   if  (typeof state === 'function' ||
@@ -13,6 +14,10 @@ export default (state, actions) => {
 
 function connect(state = () => {}, actions = {}, target) {
   class Connect extends React.Component {
+    constructor(props) {
+      super(props)
+      this.handleChange = this.handleChange.bind(this)
+    }
     componentDidMount() {
       const {flux} = this.context
       flux.FinalStore.listen(this.handleChange)
@@ -41,7 +46,7 @@ function connect(state = () => {}, actions = {}, target) {
   }
 
   Connect.contextTypes = {
-    flux: React.PropTypes.object.isRequired
+    flux: PropTypes.object.isRequired
   }
 
   return Connect
