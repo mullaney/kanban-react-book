@@ -1,6 +1,5 @@
 body {
   background-color: cornsilk;
-
   font-family: sans-serif;
   font-size: 16pt;
 }
@@ -69,4 +68,59 @@ div > span {
 
 .note:hover .delete {
   visibility: visible;
+}
+
+.lane {
+  display: inline-block;
+  margin: 1rem;
+  background-color: lightgray;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  min-width: 10rem;
+  vertical-align: top;
+}
+
+.lane-header {
+  overflow: auto;
+  padding: 1rem;
+  background-color: lightslategray;
+  color: white;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+.lane-name {
+  float: left;
+}
+
+.lane-add-note {
+  float: left;
+  margin-right: 0.5rem;
+}
+
+.lane-delete {
+  float: right;
+  margin-left: 0.5em;
+  visibility: hidden;
+}
+
+.lane-header:hover .lane-delete {
+  visibility: visible;
+}
+
+.add-lane, .lane-add-note button {
+  cursor: pointer;
+
+  background-color: #fdfdfd;
+  border: 1px solid #ccc;
+}
+
+.lane-delete button {
+  padding: 0;
+
+  cursor: pointer;
+
+  color: white;
+  background-color: rgba(0, 0, 0, 0);
+  border: 0;
 }
