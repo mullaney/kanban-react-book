@@ -1,0 +1,7 @@
+{ 
+  "NoteStore":{ 
+  "notes":[{ 
+  "id":"ce71c9d6-5f68-4c56-a4d8-a212b8a79fb1","task":"New task 1","editing":false },{ 
+  "id":"b0ff2567-b748-46a5-b052-d37a660ee12e","task":"New task 3","editing":false }] },"LaneStore":{ 
+  "lanes":[{ 
+  "id":"37c31219-9a5b-40d7-8e1d-549802f98335","name":"Lane 2","notes":["b0ff2567-b748-46a5-b052-d37a660ee12e"],"editing":false }] } }
